@@ -10,7 +10,7 @@
     "prefix": ""
   },
   "aliases": {
-    "components": "@/shared/ui/",
+    "components": "@/shared/ui",
     "composables": "@/shared/composables",
     "utils": "@/app/lib/utils",
     "ui": "@/shared/ui",
