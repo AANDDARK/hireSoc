@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { supabase } from '@/app/lib/supabase';
+
 import Button from '@/shared/ui/button/Button.vue';
 import { FormField, FormItem, FormLabel, FormControl,  } from '@/shared/ui/form';
 import { Input } from '@/shared/ui/input';
+import { hashSHA256 } from '@/app/lib/utils';
 import { ref } from 'vue';
 
 const email = ref('');
@@ -10,8 +12,8 @@ const password = ref('')
 
 const auth = async() => {
 const { data, error } = await supabase.auth.signInWithPassword({
-  email: `${email}`,
-  password: `${password}`,
+  email: `${email.value}`,
+  password: `${hashSHA256(password.value)}`,
     })
 const { data: { user } } = await supabase.auth.getUser()
     if(data){

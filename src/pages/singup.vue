@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { supabase } from '@/app/lib/supabase';
+import { hashSHA256 } from '@/app/lib/utils';
 import Button from '@/shared/ui/button/Button.vue';
 import { FormField, FormItem, FormLabel, FormControl,  } from '@/shared/ui/form';
 import { Input } from '@/shared/ui/input';
@@ -13,15 +14,7 @@ const phone = ref('');
 const password = ref('')
 
 
-const schema = z.object({
-  surname: z.string().min(1, "Surname is required"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string()
-    .min(10, "Phone number must be at least 10 digits")
-    .max(15, "Phone number must be at most 15 digits")
-    .regex(/^\+?\d+$/, "Phone number must contain only digits and optional leading +"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-});
+
 
 
 const auth = async(e:any) => {
@@ -29,7 +22,7 @@ const auth = async(e:any) => {
  const { data, error } = await supabase.auth.signUp({
   email: email.value,
   password: password.value,
-  phone: `${phone}`,
+  phone: phone.value,
   options: {
     data: {
       surname: surname.value,
