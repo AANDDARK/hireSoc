@@ -1,28 +1,25 @@
 <template>
-   <template>
   <div>
-    <div v-if="me">This is your account!</div>
-    <div v-else>This is not your account.</div>
+    <span v-if="me">it is your account</span>
+    <span v-else>it is not your account</span>
   </div>
-</template>
 </template>
 
 <script setup>
 import { onMounted, ref } from 'vue'; 
 import { useRoute } from 'vue-router';
-import { supabase } from '@/supabase/supabase';
+import { supabase } from '@/app/lib/supabase';
+import { currentUser } from '@/entities/Person/main';
+const me = ref(false);
+const route = useRoute()
 
-const me = ref(null);
-const route = useRoute();
-
-onMounted(async () => {
-  const { data: { user } } = await supabase.auth.getUser();
-  const rID = route.params.id;
-  if (user.id == rID) {
+onMounted(() => {
+  if(currentUser.id == route.params.id){
     me.value = true;
-  } else {
-    me.value = false;
+  } else{
+    me.value = false
   }
-});
+})
+
 </script>
 

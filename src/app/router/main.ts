@@ -3,13 +3,14 @@ import Main from '../../pages/main.vue'
 import Login from '../../pages/login.vue'
 import AuthLayout from '../layout/auth.vue'
 import Singup from '@/pages/singup.vue'
-
+import Account from '@/pages/account.vue'
 
 const routes = [
   { path: '/', component: Main },
+  {path: "/account/:id", component: Account},
   { path: '/auth', component: AuthLayout, children: [
-    { path: 'login', component: Login },
-    {path: "singup", component: Singup}
+    { path: '/login', component: Login },
+    {path: "/singup", component: Singup},    
   ] }
 ]
 
