@@ -1,6 +1,7 @@
 import { supabase } from "@/app/lib/supabase"
 
 export interface Data {
+    id: string
     name: string;
     country: string;
     city: string;
@@ -13,7 +14,6 @@ export const fetchUserData = async (id: string): Promise<Data> => {
         .select("*")
         .eq("id", id)
         .maybeSingle();
-
     if (error) {
         throw new Error(error.message);
     }

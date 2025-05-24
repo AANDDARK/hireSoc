@@ -10,7 +10,7 @@ const email = ref('');
 const password = ref('')
 
 
-const auth = async(e:any) => {
+const auth = async() => {
  const { data, error } = await supabase.auth.signUp({
   email: `${email.value}`,
   password: `${password.value}`,
