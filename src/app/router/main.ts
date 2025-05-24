@@ -4,6 +4,7 @@ import Login from '../../pages/login.vue'
 import Singup from '@/pages/singup.vue'
 import Account from '@/pages/account.vue'
 import Auth from '../layout/auth.vue'
+import Edit from '@/pages/edit.vue'
 
 const routes = [
   { path: '/', component: Main },
@@ -12,7 +13,8 @@ const routes = [
     {
       path: "login", component: Login
     }
-  ]}
+  ]},
+  {path: "/edit", component: Edit}
 ]
 
 const router = createRouter({
