@@ -1,6 +1,6 @@
 <template>
     <div>
-        <CardOfPerson name="John Doe" country="United States" city="New York" profession="Developer" avatar="https://via.placeholder.com/150" />
+        dasas
     </div>
     
 </template>

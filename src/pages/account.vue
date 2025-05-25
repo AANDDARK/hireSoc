@@ -6,7 +6,6 @@ import { useRoute } from 'vue-router';
 const data = ref(null); 
 const me = ref(false);
 const route = useRoute()
- 
 onMounted(async() => {
   if(JSON.parse(localStorage.getItem("  ")).id == route.params.id){
     me.value = true;
